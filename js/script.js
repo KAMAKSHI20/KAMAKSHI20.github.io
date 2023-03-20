@@ -7,24 +7,24 @@ var typed = new Typed(".typing",{
 })
 /* =========== Aside ================ */
 const nav = document.querySelector(".nav"),
-      navList = nav.querySelector("li"),
+      navList = nav.querySelectorAll("li"),
       totalNavList = navList.length,
-      allSection = document.querySelector(".section"),
+      allSection = document.querySelectorAll(".section"),
       totalSection = allSection.length;
       for(let i=0; i<totalNavList; i++)
       {
            const a = navList[i].querySelector("a");
            a.addEventListener("click", function()
            {
-                  removeBackSection(j);
+                  removeBackSection();
                   for(let j=0; j<totalNavList; j++)
                   {
                         if(navList[j].querySelector("a").classList.contains("active"))
                         {
-                              addBackSection();
+                              //addBackSection();
                               //allSection[j].classList.add("back-section");
                         }
-                        navList.querySelector("a").classList.remove("active");
+                        navList[j].querySelector("a").classList.remove("active");
                   }
                   this.classList.add("active")
                   showSection(this);
@@ -66,7 +66,7 @@ const nav = document.querySelector(".nav"),
                   }
             }
       }
-      document.querySelector(".hire-me").addEventListener("click", function())
+      document.querySelector(".hire-me").addEventListener("click", function()
       {
             const sectionIndex = this.getAttribute("data-section-index");
             console.log(sectionIndex)
@@ -74,7 +74,7 @@ const nav = document.querySelector(".nav"),
             updateNav(this);
             removeBackSection();
             addBackSection(sectionIndex);
-      }
+      })
       const navTogglerBtn = document.querySelector(".nav-toggler"),
                   aside = document.querySelector(".aside");
                   navTogglerBtn.addEventListener("click", () =>
